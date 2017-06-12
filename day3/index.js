@@ -8,16 +8,15 @@ var lis=uls.querySelectorAll('li');
 
 for(let a of lis){  
     a.onclick=function (){ 
-       var actlength=document.querySelectorAll('.active')   
-        if(this.className=='active'){
+       var actlength=document.querySelectorAll('.active')
+       var cls=this.className;   
+        if(cls.indexOf('active')!=-1){
             this.classList.remove('active')
-        }else{          
-           if(actlength.length<1){
-                this.classList.add('active')
-           }else{
-                this.classList.remove('active')
-           }
-            
+        }else {
+            for(var i in lis){
+                lis[i].className=''
+            }
+            this.classList.add('active')
         }
         
     }
@@ -27,11 +26,8 @@ var reset=document.querySelector('.reset');
 reset.onclick=function (){
     var track=document.querySelectorAll('.track');
     console.log(track)
-    for(let item of track){    
-     
-    item.style.background='#fff'
-       
-       
+    for(let item of track){        
+        item.style.background='#fff'  
     }
    
     for(let i of lis){
